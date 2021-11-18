@@ -5,11 +5,6 @@ const router = Router();
 const user = usuario
 
 
-router.get('/Buscar',(req,res)=>{
-   
-    
-})
-
 router.post('/registro',async (req,res)=>{
     try{
         let data = new usuario(req.body)
@@ -20,10 +15,30 @@ router.post('/registro',async (req,res)=>{
     catch(e){
         res.json(e),console.log(e)
 
-    }
+    }    
+})
+
+router.get('/get-user',async (req,res)=>{
+
+    // const {email} = req.body
+    // let data = await user.findOne({email:email})
+    // let data1 = {
+    //     nombre : data.nombre,
+    //     email : data.email,
+    //     pais : data.pais,
+    //     ciudad : data.ciudad,
+    //     rol : data.rol,
+    //     Tienda : data.nombreTienda
+    // }
+    // console.log(data1)
+    // res.json(data1)
+
+    let data = await userController.getUser(req.body)
+    console.log(data)
+    res.json(data)
+
     
-    
-    
+
 })
 
 router.get('/get-users', async (req,res)=>
@@ -32,7 +47,6 @@ router.get('/get-users', async (req,res)=>
     res.json({
         
         data:data,
-        totalResults:data.length,
         status: "OK"
     })
     

@@ -10,6 +10,28 @@ const getUsers = async () =>
 
 }
 
+const getUser = async (data) =>
+{
+    const {email} = data
+
+    try{
+        const user = await usuario.findOne({email:email})
+        console.log(user)
+        const user1 = {
+            email:user.email,
+            rol:user.rol,
+            nombreTienda:user.nombreTienda
+        }
+        console.log(user1)
+        return user1
+
+    }
+    catch(e){
+        console.log(e)
+    }
+    
+}
+
 const login = async (userData) =>
 {
     const {email,contraseña} = userData
@@ -33,10 +55,20 @@ const login = async (userData) =>
     }
 }
 
+const validarRol = (Rol) => {
+
+    if (Rol = "Cliente")
+    {
+        
+    }
+
+
+}
 
 const userController =  {
     login,
-    getUsers
+    getUsers,
+    getUser
 }
 
 export default userController
