@@ -1,5 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import routerProduct from './routes/product.js';
 import router from './routes/project.js';
 const app = express();
 const port = 3000;
@@ -8,6 +9,7 @@ app.use(express.json())
 // app.use(express.urlencoded())
 
 app.use(router)
+app.use(routerProduct)
 
 app.use('/api',router);
 

@@ -1,10 +1,8 @@
 import Router from "express";
-import productController from "../controllers/Product.js";
-import producto from "../modules/Productos";
-const router = Router();
-const product = producto
+import producto from "../modules/Productos.js";
+const routerProduct = Router();
 
-router.post('/saveProduct',async (req,res)=>{
+routerProduct.post('/saveProduct',async (req,res)=>{
     try{
         let data = new producto(req.body)
         await data.save()
@@ -17,29 +15,31 @@ router.post('/saveProduct',async (req,res)=>{
     }    
 })
 
-router.get('/get-product',async (req,res)=>{
+// routerProduct.get('/get-product',async (req,res)=>{
 
-    let data = await productController.getProduct(req.body)
-    console.log(data)
+//     let data = await productController.getProduct(req.body)
+//     console.log(data)
     
-})
+// })
 
-router.get('/get-products', async (req,res)=>
-{
-    let data = await productController.getProducts()
-    res.json({
+// routerProduct.get('/get-products', async (req,res)=>
+// {
+//     let data = await productController.getProducts()
+//     res.json({
         
-        data:data,
-        totalResults:data.length,
-        status: "OK"
-    })
+//         data:data,
+//         totalResults:data.length,
+//         status: "OK"
+//     })
     
-})
+// })
 
-router.post('/searchProduct', async(req,res)=>
-{ 
+// routerProduct.post('/searchProduct', async(req,res)=>
+// { 
     
-    let data = await productController.searchProduct(req.body);
-    res.json({data})
+//     let data = await productController.searchProduct(req.body);
+//     res.json({data})
     
-})
+// })
+
+export default routerProduct
